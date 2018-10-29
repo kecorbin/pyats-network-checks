@@ -14,7 +14,7 @@ ${testbed}     ../evpn_fabric.yaml
 Initialize
     # select the testbed to use
     use testbed "${testbed}"
-    run testcase "CRC_Count_check:common_setup"
+    run testcase "CRC_Count_check.common_setup"
 
 
 CRC_Check
