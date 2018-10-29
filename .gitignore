@@ -10,6 +10,12 @@ __pycache__/
 archive/
 runinfo/
 
+# pyATS reports/etc
+log.html
+output.xml
+report.html
+
+
 # Distribution / packaging
 .Python
 build/
