@@ -77,7 +77,7 @@ class CRC_count_check(aetest.Testcase):
     # Second test section
     @ aetest.test
     def check_CRC(self):
-        
+
         mega_dict = {}
         mega_tabular = []
         for device, ints in self.all_interfaces.items():
