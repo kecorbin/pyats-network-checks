@@ -9,8 +9,8 @@ Library        ats.robot.pyATSRobot
 Initialize
     # select the testbed to use
     use testbed "${testbed}"
-    run testcase "CRC_Count_check.common_setup"
+    run testcase "BGP_Neighbors_Established.common_setup"
 
 
-Check all interfaces for CRC errors
-    run testcase "CRC_Count_check.CRC_count_check"
+Verify all BGP Neighbors are established
+    run testcase "BGP_Neighbors_Established.BGP_Neighbors_Established"
