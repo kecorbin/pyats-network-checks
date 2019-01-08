@@ -17,34 +17,48 @@ class common_setup(aetest.CommonSetup):
         genie_testbed = Genie.init(testbed)
         self.parent.parameters['testbed'] = genie_testbed
         device_list = []
-        for device in genie_testbed.devices.values():
+        for d in genie_testbed.devices.keys():
             # Mark testcase with looping information
+            device = genie_testbed.devices[d]
+
             log.info(banner(
                 "Connect to device '{d}'".format(d=device.name)))
             try:
                 device.connect()
-                device_list.append(device)
+                device_list.append(d)
 
             except Exception as e:
                 msg = "Failed to connect to {} will not be checked!"
                 log.info(msg.format(device.name))
 
         # run local_user_check against each device in the list
-        aetest.loop.mark(local_user_check, device=device_list)
+        aetest.loop.mark(local_user_check, dev_name=device_list)
 
 
 class local_user_check(aetest.Testcase):
 
-    @aetest.test
-    def check_for_username(self, device, expected_local_users):
-        log.info('Checking for {} in local user database'.format(expected_local_users))
-        usernames = device.execute('show run | inc username')
-        lines = usernames.split('\r\n')
-        cfg_local_users = [w.split(' ')[1] for w in lines]
-        log.info('Local Users: {}'.format(cfg_local_users))
+    groups = ['aaa', 'golden_config']
 
-        if not sorted(expected_local_users) == sorted(cfg_local_users):
-            self.failed("User lists are not same")
+    @aetest.test
+    def compare_local_users(self, steps, dev_name, expected_local_users):
+        """Local User Database checks
+
+        Given a list of expected usernames validates they
+        are present on the device
+
+        """
+        device = self.parent.parameters['testbed'].devices[dev_name]
+        with steps.start('Getting Configured Usernames'):
+            usernames = device.execute('show run | inc username')
+            lines = usernames.split('\r\n')
+            cfg_local_users = [w.split(' ')[1] for w in lines]
+            log.info('Configured Users: {}'.format(cfg_local_users))
+
+        with steps.start('Comparing Configured Usernames'):
+            msg = 'Checking for {} in local user database'
+            log.info(msg.format(expected_local_users))
+            if not sorted(expected_local_users) == sorted(cfg_local_users):
+                self.failed("User lists are not same")
 
 
 if __name__ == '__main__':  # pragma: no cover

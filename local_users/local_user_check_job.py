@@ -4,6 +4,7 @@
 import os
 from ats.easypy import run
 import argparse
+from ats.datastructures.logic import Or
 
 
 # All run() must be inside a main function
@@ -17,4 +18,5 @@ def main():
     # Find the location of the script in relation to the job file
     local_user_check = os.path.join('./local_user_check.py')
     # Execute the testscript
-    run(testscript=local_user_check, **vars(args))
+    run(testscript=local_user_check, taskid="Local User Check", **vars(args),
+        groups=Or('golden_config', 'bar'))
