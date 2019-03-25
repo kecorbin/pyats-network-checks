@@ -1,6 +1,6 @@
 import os
 from pyats.easypy import run
-import yaml
+
 
 # All run() must be inside a main function
 def main():
