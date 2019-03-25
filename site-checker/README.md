@@ -16,6 +16,10 @@ be pretty straightforward to modify to suit your needs.
 
 The operation of the script is to attempt to connect to all of the websites defined, using each of the proxies, and email some nice reports based on the job run.  
 
+To accomplish this the script makes use of pyATS [Looping](https://pubhub.devnetcloud.com/media/pyats/docs/aetest/loop.html#looping-sections) which allows a custom generator to
+be defined to dynamically configure the looping based on `# of proxies * # of sites`
+
+
 ## Build + Run
 
 The easiest way to execute the tests is to build a docker image using the provided
