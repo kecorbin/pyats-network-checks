@@ -1,0 +1,8 @@
+components:
+    mailbot:
+        default_email_domain: acme.com
+        smtp_args:
+            smtp_host: 'mail.acme.com'
+            smtp_port: 25
+        to_addrs:
+          - yourname@acme.com

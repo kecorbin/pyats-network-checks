@@ -1,0 +1,6 @@
+google:
+  url: http://www.google.com
+  threshold: 2
+cisco:
+  url: https://www.cisco.com
+  threshold: 2
