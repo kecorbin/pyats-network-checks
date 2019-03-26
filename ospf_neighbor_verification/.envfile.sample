@@ -1,0 +1,11 @@
+# change these values and rename to .envfile
+
+ROOM_ID=<room id>
+SPARK_TOKEN=<token>
+PYATS_USERNAME=cisco
+PYATS_PASSWORD=cisco
+PYATS_AUTH_PASSWORD=cisco
+SERVER_NAME=127.0.0.1
+
+# determines how often we poll (seconds)
+POLLING_INTERVAL=10

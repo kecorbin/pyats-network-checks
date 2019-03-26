@@ -30,3 +30,6 @@ we've provided a [default_testbed.yaml](./testedbed.yaml) to go along with the s
 * #### [bgp_adjacencies](./bgp_adjacencies) - "if a neighbor is configured, it should be established"
 
 * #### [crc_errors](./crc_errors) - "No interface should be accumulating CRC errors"
+
+* #### [OSPF Neighbor Verification](./ospf_neighbor_verification) - "This device should
+have these OSPF neighbors"

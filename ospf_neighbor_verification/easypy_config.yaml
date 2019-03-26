@@ -1,0 +1,14 @@
+
+plugins:                   # top level key for plugins
+
+    WebExTeamsNotification:
+
+      enabled: True           # flag marking it as "enabled"
+                              # set to False to disable a plugin
+      module: plugins.WebexTeamsNotificationPlugin      # module path where this
+                                                  # plugin can be imported
+
+      order: 1.0                # defines the order of execution of plugins
+                                # it's just a number that allows users to
+                                # specify plugin order.
+                                # - smaller numbers runs first

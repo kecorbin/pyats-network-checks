@@ -1,0 +1,88 @@
+testbed:
+
+  name: genie-route-tracker_default_70k4cM
+
+  tacacs:
+      username: "%ENV{PYATS_USERNAME}"
+  passwords:
+      tacacs: "%ENV{PYATS_PASSWORD}"
+      enable: "%ENV{PYATS_AUTH_PASS}"
+      line: "%ENV{PYATS_PASSWORD}"
+
+devices:
+
+
+  choke1:
+    os: iosxe
+    type: IOSv
+    connections:
+
+      defaults:
+        class: unicon.Unicon
+      vty:
+        ip: 10.94.241.228
+        protocol: ssh
+
+    custom:
+      expected_ospf_neighbors:
+        ospf_area: 0.0.0.0
+        vrf: default
+        ospf_process: 1
+        neighbors:
+          hub11:
+            expected_interface: GigabitEthernet0/1
+            expected_neighbor: 192.168.0.11
+            associated_network: HUB11-1247-4adb-aa90-256eb2e0b5cd
+          hub12:
+            expected_interface: GigabitEthernet0/2
+            expected_neighbor: 192.168.0.12
+            associated_network: HUB12-1247-4adb-aa90-256eb2e0b5cd
+          hub13:
+            expected_interface: GigabitEthernet0/3
+            expected_neighbor: 192.168.0.13
+            associated_network: HUB13-1247-4adb-aa90-256eb2e0b5cd
+          hub14:
+            expected_interface: GigabitEthernet0/4
+            expected_neighbor: 192.168.0.14
+            associated_network: HUB14-1247-4adb-aa90-256eb2e0b5cd
+
+      abstraction:
+        order: [os, type]
+
+  choke2:
+    os: iosxe
+    type: IOSv
+    connections:
+
+      defaults:
+        class: unicon.Unicon
+      vty:
+        ip: 10.94.241.229
+        protocol: ssh
+
+    custom:
+      expected_ospf_neighbors:
+        ospf_area: 0.0.0.0
+        vrf: default
+        ospf_process: 1
+        neighbors:
+          hub21:
+            expected_interface: GigabitEthernet0/1
+            expected_neighbor: 192.168.0.21
+            # expected_neighbor: 10.0.0.34
+            associated_network: HUB21-1247-4adb-aa90-256eb2e0b5cd
+          hub22:
+            expected_interface: GigabitEthernet0/2
+            expected_neighbor: 192.168.0.22
+            associated_network: HUB22-1247-4adb-aa90-256eb2e0b5cd
+          hub23:
+            expected_interface: GigabitEthernet0/3
+            expected_neighbor: 192.168.0.23
+            associated_network: HUB23-1247-4adb-aa90-256eb2e0b5cd
+          hub24:
+            expected_interface: GigabitEthernet0/4
+            expected_neighbor: 192.168.0.24
+            associated_network: HUB24-1247-4adb-aa90-256eb2e0b5cd
+
+      abstraction:
+        order: [os, type]

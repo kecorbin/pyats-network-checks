@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  webui:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+
+  checker1:
+    build: .
+    image: kecorbin/genie-neighbor-check
+    restart: always
+    # only supported for swarm
+    deploy:
+      restart_policy:
+        delay: 10s
+    volumes:
+      - ./testbed.yaml:/scripts/testbed.yaml
+    env_file:
+      - ./.envfile
