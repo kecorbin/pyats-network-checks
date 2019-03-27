@@ -174,8 +174,8 @@ class Recovery(aetest.Testcase):
         recovery_queue = self.parent.parameters['recovery_queue']
         prfx = 'perform_recovery_for_{}'
         uids = [prfx.format(nbr['name']) for nbr in recovery_queue]
-        # here we mark the recovery action to be performed on all neighbors that
-        # are still "failed"
+        # here we mark the recovery action to be performed on all neighbors
+        # that are still "failed"
         aetest.loop.mark(self.recovery_action, uids=uids, nbr=recovery_queue)
 
     @aetest.test
