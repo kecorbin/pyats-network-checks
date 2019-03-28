@@ -103,9 +103,14 @@ class CheckForNeighbor(aetest.Testcase):
         name = nbr
         nbr = nbrs[nbr]
 
-        # in case a specific neighbor is a different area
+        # in case a specific neighbor is a different area/process
         try:
             ospf_area = nbr['ospf_area']
+        except KeyError:
+            pass
+
+        try:
+            ospf_process = nbr['ospf_process']
         except KeyError:
             pass
 
