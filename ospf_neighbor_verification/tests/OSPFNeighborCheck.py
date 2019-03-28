@@ -102,6 +102,13 @@ class CheckForNeighbor(aetest.Testcase):
         # check for expected neighbor
         name = nbr
         nbr = nbrs[nbr]
+
+        # in case a specific neighbor is a different area
+        try:
+            ospf_area = nbr['ospf_area']
+        except KeyError:
+            pass
+
         expected_interface = nbr['expected_interface']
         expected_neighbor = nbr['expected_neighbor']
         try:
