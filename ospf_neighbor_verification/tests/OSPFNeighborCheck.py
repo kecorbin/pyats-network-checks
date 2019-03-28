@@ -63,19 +63,8 @@ class CheckForNeighbor(aetest.Testcase):
         # Retrieve Ospf Class for this device
         ospf_cls = get_ops('ospf', device)
 
-        # Instantiate the class, and provides some attributes
-        # Attributes limit the # of clis to use;
-        # It will only learn the neighbors,  nothing else.
-        attributes = ['info[vrf][(.*)][address_family][ipv4]'
-                      '[instance][(.*)]'
-                      '[areas][(.*)]'
-                      '[interfaces][(.*)]'
-                      '[neighbors][(.*)]'
-                      .format(OSPF_PROCESS=ospf_process,
-                              OSPF_AREA=ospf_area)]
-
         # parse ospf on device
-        ospf = ospf_cls(device, attributes=attributes)
+        ospf = ospf_cls(device)
         ospf.learn()
 
         # pass/fail based on whether OSPF was parsed succesfully
