@@ -67,8 +67,8 @@ class CheckForNeighbor(aetest.Testcase):
         # Attributes limit the # of clis to use;
         # It will only learn the neighbors,  nothing else.
         attributes = ['info[vrf][(.*)][address_family][ipv4]'
-                      '[instance][{OSPF_PROCESS}]'
-                      '[areas][{OSPF_AREA}]'
+                      '[instance][(.*)]'
+                      '[areas][(.*)]'
                       '[interfaces][(.*)]'
                       '[neighbors][(.*)]'
                       .format(OSPF_PROCESS=ospf_process,
