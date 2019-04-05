@@ -1,9 +1,8 @@
 # To run the job:
-# pyats run job BGP_check_job.py --testbed_file <testbed_file.yaml>
+# easypy BGP_check_job.py -testbed_file <testbed_file.yaml>
 # Description: This job file checks if all BGP neighbors are in the 'established' state
 import os
 from ats.easypy import run
-
 
 # All run() must be inside a main function
 def main():
