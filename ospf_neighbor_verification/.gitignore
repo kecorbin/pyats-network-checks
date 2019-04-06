@@ -1,3 +1,9 @@
+#
+jenkins_home/*
+!jenkins_home/jobs
+jenkins_home/jobs/ospf-neighbor-check/*
+!jenkins_home/jobs/ospf-neighbor-check/config.xml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
