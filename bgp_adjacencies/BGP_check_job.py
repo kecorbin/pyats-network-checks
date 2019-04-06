@@ -1,6 +1,6 @@
 # To run the job:
-# easypy CRC_check_job.py -testbed_file <testbed_file.yaml>
-# Description: This job file shows the Genie CRC Interface Checker
+# pyats run job BGP_check_job.py --testbed_file <testbed_file.yaml>
+# Description: This job file checks if all BGP neighbors are in the 'established' state
 import os
 from ats.easypy import run
 
