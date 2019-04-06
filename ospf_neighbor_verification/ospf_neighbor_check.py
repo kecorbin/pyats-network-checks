@@ -1,3 +1,4 @@
+import os
 from pyats.easypy import run
 
 
@@ -5,5 +6,7 @@ from pyats.easypy import run
 #   - it should have a runtime argument
 #   - and contains one or more tasks
 def main(runtime):
-    run(testscript='tests/OSPFNeighborCheck.py',
+    pwd = os.path.dirname(__file__)
+    testscript = os.path.join(pwd, 'tests/OSPFNeighborCheck.py')
+    run(testscript=testscript,
         runtime=runtime)
