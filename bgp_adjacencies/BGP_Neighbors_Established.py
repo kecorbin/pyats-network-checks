@@ -6,9 +6,6 @@ import json
 # To build the table at the end
 from tabulate import tabulate
 
-# Needed to import the testbed definition from file to pyATS
-from ats.topology import loader
-
 # Needed for aetest script
 from ats import aetest
 from ats.log.utils import banner
@@ -37,7 +34,6 @@ class common_setup(aetest.CommonSetup):
     # Connect to each device in the testbed
     @aetest.subsection
     def connect(self, testbed):
-        testbed = loader.load(testbed)
         genie_testbed = Genie.init(testbed)
         self.parent.parameters['testbed'] = genie_testbed
         device_list = []
