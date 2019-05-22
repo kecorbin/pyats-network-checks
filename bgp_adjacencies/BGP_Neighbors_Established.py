@@ -12,10 +12,7 @@ from ats.log.utils import banner
 
 # Genie Imports
 from genie.conf import Genie
-from genie.abstract import Lookup
 
-# import the genie libs
-from genie.libs import ops # noqa
 
 # Get your logger for your script
 log = logging.getLogger(__name__)
@@ -69,9 +66,7 @@ class BGP_Neighbors_Established(aetest.Testcase):
         for dev in self.parent.parameters['dev']:
             log.info(banner("Gathering BGP Information from {}".format(
                 dev.name)))
-            abstract = Lookup.from_device(dev)
-            bgp = abstract.ops.bgp.bgp.Bgp(dev)
-            bgp.learn()
+            bgp = dev.learn('bgp')
             self.all_bgp_sessions[dev.name] = bgp.info
 
     @ aetest.test
