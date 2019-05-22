@@ -12,10 +12,7 @@ from ats.log.utils import banner
 
 # Genie Imports
 from genie.conf import Genie
-from genie.abstract import Lookup
 
-# import the genie libs
-from genie.libs import ops # noqa
 
 # Get your logger for your script
 log = logging.getLogger(__name__)
@@ -69,9 +66,7 @@ class CRC_count_check(aetest.Testcase):
         for dev in self.parent.parameters['dev']:
             log.info(banner("Gathering Interface Information from {}".format(
                 dev.name)))
-            abstract = Lookup.from_device(dev)
-            intf = abstract.ops.interface.interface.Interface(dev)
-            intf.learn()
+            intf = dev.learn('interface')
             self.all_interfaces[dev.name] = intf.info
 
     # Second test section
