@@ -57,6 +57,6 @@ six==1.12.0
 tabulate==0.8.3
 tqdm==4.30.0
 unicon==3.4.7
-urllib3==1.24.1
+urllib3==1.26.5
 xmltodict==0.11.0
 yamllint==1.14.0
